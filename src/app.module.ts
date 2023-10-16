@@ -10,6 +10,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {Product} from "./products/entities/product.entity";
 import {ProductCategory} from "./product-categories/entities/product-category.entity";
 import {Supplier} from "./suppliers/entities/supplier.entity";
+import 'dotenv/config';
+
+const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_DATABASE } = process.env;
 
 @Module({
   imports: [
@@ -19,11 +22,11 @@ import {Supplier} from "./suppliers/entities/supplier.entity";
     }), ProductsModule, SuppliersModule, ProductCategoriesModule,
     TypeOrmModule.forRoot({
       type: "postgres",
-      host: "localhost",
-      port: 5432,
-      username: "postgres",
-      password: "Qwerty226",
-      database: "postgres",
+      host: DB_HOST,
+      port: <number><unknown>DB_PORT,
+      username: DB_USERNAME,
+      password: DB_PASSWORD,
+      database: DB_DATABASE,
       entities: [Product, Supplier, ProductCategory],
       synchronize: true,
     })
