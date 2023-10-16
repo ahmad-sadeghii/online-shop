@@ -18,20 +18,4 @@ export class SuppliersService {
     await this.suppliersRepository.save(supplier);
     return supplier;
   }
-
-  findAll() {
-    return `This action returns all suppliers`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} supplier`;
-  }
-
-  update(id: number, updateSupplierInput: UpdateSupplierInput) {
-    return `This action updates a #${id} supplier`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} supplier`;
-  }
 }
