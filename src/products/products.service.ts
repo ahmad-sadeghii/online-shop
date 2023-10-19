@@ -89,13 +89,12 @@ export class ProductsService {
   }
 
   async remove(Id: number) {
-    const product = await this.productsRepository.findOneBy({ Id });
+    const result = await this.productsRepository.delete(Id);
 
-    if (!product) {
-      throw new Error(`Product with ID ${Id} not found`);
+    if (result.affected === 0) {
+      throw new Error(`Invalid product ID ${Id} specified.`);
     }
 
-    await this.productsRepository.remove(product)
     return true;
   }
 }
